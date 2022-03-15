@@ -9,10 +9,12 @@ class PlacesController < ApplicationController
   end
 
   def show
+    if @current_user
     @place = Place.find(params["id"])
     @post = Post.find(params["id"])
     @post.user_id = @current_user.id 
   end
+end
 
   def new
     @place = Place.new
@@ -25,5 +27,5 @@ class PlacesController < ApplicationController
     end
     redirect_to "/places"
     end
-  end
+  
 end
