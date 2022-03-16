@@ -11,8 +11,8 @@ class PlacesController < ApplicationController
   def show
     if @current_user
     @place = Place.find(params["id"])
-    @post = Post.find(params["id"])
-    @post.user_id = @current_user.id 
+   # @post = Post.find(params["id"])
+    # @post.user_id = @current_user.id 
   end
 end
 

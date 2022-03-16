@@ -7,18 +7,26 @@
 <p>
 <% if @current_user %>
 <h5>Here are the existing posts from <%= @place.name %>:</h5>
+<div class="row">
 <% for post in @place.posts.where({ user_id: @current_user.id}) %>
- <div class="col-md-3 col-sm-6">
  
-     <% if post.uploaded_image.attached? %>
-       <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
-     <% else %>
-       <img src="<%= post.image %>" class="img-fluid">
-     <% end %>
+<div class="col-md-4 col-sm-6">  
+    <p><h3><%= post.title %></h3></p>
+    <p><%= post.posted_on %></p>
+ 
+    <% if post.uploaded_image.attached? %>
+      <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid">
+    <% else %>
+      <img src="<%= post.image %>" class="img-fluid">
+    <% end %>
+ 
+   
+    <p class="mt-2"><%= post.description %></p>
+  </div>
  
      <h4>
           <% if post.user %>
-         Posted by: <%= post.user.first_name %>
+       
        <% else %>
          anonymous
        <% end %>
